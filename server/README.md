@@ -27,13 +27,13 @@ API REST del proyecto **RecipeHub**, una pequeña red social de recetas. Los usu
 server/
 ├── src/
 │   ├── config/
-│   │   └── db.js              Conexión a MongoDB
+│   │   └── db.js                  Conexión a MongoDB
 │   ├── controllers/
 │   │   ├── auth.controller.js
 │   │   ├── recipe.controller.js
 │   │   └── user.controller.js
 │   ├── middleware/
-│   │   └── auth.js            Verificación del token (isAuth)
+│   │   └── auth.middleware.js     Verificación del token (isAuth)
 │   ├── models/
 │   │   ├── User.js
 │   │   └── Recipe.js
@@ -41,18 +41,19 @@ server/
 │   │   ├── auth.routes.js
 │   │   ├── recipe.routes.js
 │   │   └── user.routes.js
-│   ├── app.js                 Configuración de Express
-│   └── index.js               Arranque del servidor
+│   ├── app.js                     Configuración de Express
+│   └── index.js                   Arranque del servidor
 ├── test/
-│   ├── setup.js               Carga .env.test y conecta a la base de datos
+│   ├── setup.js                   Carga .env.test y conecta a la base de datos
 │   ├── app.test.js
 │   ├── auth.test.js
-│   ├── recipe.test.js
-│   └── user.test.js
+│   ├── recipes.test.js
+│   └── users.test.js
 ├── .env.example
-├── .env.test                  (no se sube al repositorio)
-├── .mocharc.json              Configuración de Mocha
-└── package.json
+├── .env.test                      (no se sube al repositorio)
+├── .mocharc.json                  Configuración de Mocha
+├── package.json
+└── README.md
 ```
 
 ## ⚙️ Instalación
@@ -112,8 +113,8 @@ npm test
 |---|---|
 | `app.test.js` | Mensaje de bienvenida |
 | `auth.test.js` | Registro, validaciones (422), email duplicado (400), login correcto y credenciales inválidas (401) |
-| `recipe.test.js` | Crear con y sin token, campos obligatorios, ver por id, id inválido (400), no encontrada (404), editar y borrar, y que otro usuario no pueda hacerlo (403) |
-| `user.test.js` | Perfil público con sus recetas, sin email ni contraseña, id inválido (400) y usuario inexistente (404) |
+| `recipes.test.js` | Crear con y sin token, campos obligatorios, ver por id, id inválido (400), no encontrada (404), editar y borrar, y que otro usuario no pueda hacerlo (403) |
+| `users.test.js` | Perfil público con sus recetas, sin email ni contraseña, id inválido (400) y usuario inexistente (404) |
 
 ## 🗃️ Modelos
 
