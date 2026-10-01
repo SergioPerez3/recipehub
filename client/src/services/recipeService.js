@@ -8,6 +8,11 @@ const handleResponse = async (response) => {
   return data;
 };
 
+const getAuthHeaders = () => ({
+  "Content-type": "application/json",
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
+});
+
 export const getRecipes = async () => {
   const response = await fetch(API_URL);
   return handleResponse(response);
@@ -15,5 +20,31 @@ export const getRecipes = async () => {
 
 export const getRecipeById = async (id) => {
   const response = await fetch(`${API_URL}/${id}`);
+  return handleResponse(response);
+};
+
+export const createRecipe = async (recipeData) => {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: getAuthHeaders(),
+    body: JSON.stringify(recipeData),
+  });
+  return handleResponse(response);
+};
+
+export const updateRecipe = async (id, recipeData) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: getAuthHeaders(),
+    body: JSON.stringify(recipeData),
+  });
+  return handleResponse(response);
+};
+
+export const deleteRecipe = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+    headers: getAuthHeaders(),
+  });
   return handleResponse(response);
 };
