@@ -13,6 +13,12 @@ const users = [
   { name: "Veganmix", email: "veganmix@recipehub.dev" },
   { name: "VacaLola", email: "vacalola@recipehub.dev" },
 ];
+// Usuarios de ejemplo de la primera versión del seeder (se borran si existen)
+const legacyEmails = [
+  "laura@recipehub.dev",
+  "gaby@recipehub.dev",
+  "marta@recipehub.dev",
+];
 
 const img = (seed) => `https://picsum.photos/seed/${seed}/600/400`;
 
@@ -118,8 +124,7 @@ const recipes = [
     title: "Tortilla de calabacín",
     description: "Vegetariana, jugosa y con poca grasa.",
     image: img("tortilla-calabacin"),
-    ingredients:
-      "2 calabacines\n1 cebolla\n5 huevos\nAceite de oliva\nSal",
+    ingredients: "2 calabacines\n1 cebolla\n5 huevos\nAceite de oliva\nSal",
     steps:
       "Corta el calabacín y la cebolla en láminas finas\nPóchalos en la sartén con aceite a fuego lento\nBate los huevos con sal y mezcla con las verduras escurridas\nCuaja la tortilla por ambos lados",
     category: "cena",
@@ -165,12 +170,144 @@ const recipes = [
     difficulty: "media",
     cookingTime: 70,
   },
+  {
+    author: "Saladman",
+    title: "Ensalada templada de lentejas y verduras asadas",
+    description: "Vegana, templada y con mucha proteína vegetal.",
+    image: img("lentejas-asadas"),
+    ingredients:
+      "1 bote de lentejas cocidas\n1 calabacín\n1 pimiento rojo\n1 cebolla roja\n2 cucharadas de vinagre de Jerez\nAceite de oliva\n1 cucharadita de comino\nPerejil fresco\nSal",
+    steps:
+      "Precalienta el horno a 200 °C\nCorta el calabacín, el pimiento y la cebolla en trozos\nHornéalos 25 minutos con aceite, comino y sal\nEscurre y aclara las lentejas\nMezcla las lentejas con las verduras aún templadas\nAliña con vinagre, aceite y perejil picado",
+    category: "comida",
+    difficulty: "media",
+    cookingTime: 40,
+  },
+  {
+    author: "Veganmix",
+    title: "Tofu revuelto con cúrcuma",
+    description: "Vegano, sin huevo y listo en 15 minutos.",
+    image: img("tofu-revuelto"),
+    ingredients:
+      "250 g de tofu firme\n1/2 cucharadita de cúrcuma\n1 cucharada de levadura nutricional\n1 tomate\nUn puñado de espinacas\nAceite de oliva\nSal y pimienta negra\nPan tostado para servir",
+    steps:
+      "Escurre el tofu y desmenúzalo con un tenedor\nSofríe el tomate troceado en una sartén con aceite\nAñade el tofu y la cúrcuma y remueve 5 minutos\nIncorpora las espinacas, la levadura nutricional, sal y pimienta\nSirve sobre pan tostado",
+    category: "desayuno",
+    difficulty: "fácil",
+    cookingTime: 15,
+  },
+  {
+    author: "VacaLola",
+    title: "Shakshuka",
+    description: "Vegetariana: huevos escalfados en salsa de tomate especiada.",
+    image: img("shakshuka"),
+    ingredients:
+      "4 huevos\n1 cebolla\n1 pimiento rojo\n2 dientes de ajo\n400 g de tomate triturado\n1 cucharadita de comino\n1 cucharadita de pimentón dulce\nPerejil fresco\nAceite de oliva y sal\nPan para mojar",
+    steps:
+      "Sofríe la cebolla, el pimiento y el ajo picados\nAñade el comino y el pimentón y remueve un minuto\nIncorpora el tomate y cuece 10 minutos\nHaz cuatro huecos en la salsa y casca un huevo en cada uno\nTapa y cocina 5 minutos hasta que la clara cuaje\nEspolvorea con perejil y sirve con pan",
+    category: "cena",
+    difficulty: "media",
+    cookingTime: 30,
+  },
+  {
+    author: "Saladman",
+    title: "Ensalada de espinacas y fresas",
+    description: "Vegetariana, dulce y salada, lista en 15 minutos.",
+    image: img("espinacas-fresas"),
+    ingredients:
+      "150 g de espinacas baby\n200 g de fresas\nUn puñado de nueces\n100 g de queso de cabra\n2 cucharadas de vinagre balsámico\n3 cucharadas de aceite de oliva\nSal y pimienta",
+    steps:
+      "Lava las espinacas y colócalas en una fuente\nCorta las fresas en láminas\nTuesta las nueces en una sartén sin aceite 2 minutos\nAñade las fresas, las nueces y el queso desmenuzado\nAliña con aceite, vinagre balsámico, sal y pimienta",
+    category: "cena",
+    difficulty: "fácil",
+    cookingTime: 15,
+  },
+  {
+    author: "Veganmix",
+    title: "Hamburguesas de lentejas y avena",
+    description: "Veganas, jugosas y al horno.",
+    image: img("hamburguesas-lentejas"),
+    ingredients:
+      "1 bote de lentejas cocidas\n60 g de copos de avena\n1 zanahoria rallada\n1/2 cebolla\n1 diente de ajo\n1 cucharadita de pimentón\n1 cucharadita de comino\nPerejil\nSal\nPanes de hamburguesa\nLechuga y tomate para servir",
+    steps:
+      "Escurre las lentejas y aplástalas a medias con un tenedor\nSofríe la cebolla y el ajo picados\nMezcla todo con la avena, la zanahoria y las especias\nDeja reposar la masa 10 minutos\nForma cuatro hamburguesas\nHornea a 200 °C durante 20 minutos, dándoles la vuelta a la mitad\nMonta en los panes con lechuga y tomate",
+    category: "comida",
+    difficulty: "media",
+    cookingTime: 45,
+  },
+  {
+    author: "VacaLola",
+    title: "Croquetas de espinacas y queso",
+    description: "Vegetarianas, cremosas por dentro y crujientes por fuera.",
+    image: img("croquetas-espinacas"),
+    ingredients:
+      "300 g de espinacas\n80 g de mantequilla\n80 g de harina\n600 ml de leche\n100 g de queso rallado\nNuez moscada y sal\n2 huevos\nPan rallado\nAceite de oliva para freír",
+    steps:
+      "Saltea las espinacas, escúrrelas bien y pícalas\nDerrite la mantequilla y tuesta la harina un minuto\nAñade la leche poco a poco sin dejar de remover\nIncorpora las espinacas, el queso, la nuez moscada y la sal\nCuece 5 minutos y deja enfriar la masa unas horas en la nevera\nForma las croquetas y pásalas por huevo batido y pan rallado\nFríelas en aceite caliente hasta que estén doradas",
+    category: "snack",
+    difficulty: "difícil",
+    cookingTime: 70,
+  },
+  {
+    author: "Saladman",
+    title: "Aliño cremoso de tahini y limón",
+    description: "Vegano, para ensaladas y bowls.",
+    image: img("aliño-tahini"),
+    ingredients:
+      "3 cucharadas de tahini\nZumo de 1 limón\n1 diente de ajo\n3 cucharadas de agua\n1 cucharada de aceite de oliva\nSal",
+    steps:
+      "Pica el ajo muy fino\nMezcla el tahini con el limón, el aceite y el ajo\nAñade el agua poco a poco removiendo hasta que quede cremoso\nRectifica de sal y sirve sobre ensaladas o verduras asadas",
+    category: "otros",
+    difficulty: "fácil",
+    cookingTime: 5,
+  },
+  {
+    author: "Veganmix",
+    title: "Ramen vegano de miso y setas",
+    description: "Vegano, caldo reconfortante con tofu y verduras.",
+    image: img("ramen-vegano"),
+    ingredients:
+      "2 nidos de fideos de ramen sin huevo\n1 l de caldo de verduras\n2 cucharadas de pasta de miso\n1 cucharada de salsa de soja\n200 g de tofu firme\n150 g de setas shiitake\n1 zanahoria\n2 puñados de espinacas\n2 cebolletas\n1 trozo de jengibre\n2 dientes de ajo\nAceite de sésamo\nSemillas de sésamo",
+    steps:
+      "Corta el tofu en dados y dóralo en una sartén con un poco de aceite\nSaltea las setas laminadas y resérvalas\nSofríe el ajo y el jengibre picados en una olla con aceite de sésamo\nAñade el caldo y la zanahoria en tiras y cuece 10 minutos\nDisuelve el miso con un poco de caldo caliente e incorpóralo con la soja sin que hierva\nCuece los fideos aparte según indique el paquete\nReparte los fideos en cuencos, vierte el caldo y añade el tofu, las setas y las espinacas\nTermina con cebolleta y semillas de sésamo",
+    category: "cena",
+    difficulty: "difícil",
+    cookingTime: 60,
+  },
+  {
+    author: "VacaLola",
+    title: "Panna cotta de vainilla con fresas",
+    description: "Vegetariana, cuajada con agar-agar en lugar de gelatina.",
+    image: img("panna-cotta"),
+    ingredients:
+      "400 ml de nata para montar\n200 ml de leche\n60 g de azúcar\n1 vaina de vainilla o 1 cucharadita de extracto\n2 g de agar-agar en polvo\n200 g de fresas\n2 cucharadas de azúcar para el coulis\nZumo de 1/2 limón",
+    steps:
+      "Calienta la nata con la leche, el azúcar y la vainilla sin que llegue a hervir\nDisuelve el agar-agar con un poco de la mezcla fría e intégralo\nHierve 2 minutos sin dejar de remover\nReparte en vasos o moldes y deja enfriar\nRefrigera al menos 3 horas\nTritura las fresas con el azúcar y el limón para hacer el coulis\nSirve la panna cotta con el coulis por encima",
+    category: "postre",
+    difficulty: "media",
+    cookingTime: 30,
+  },
 ];
 
 const seed = async () => {
   await connectDB();
 
   const emails = users.map((user) => user.email);
+  const emailsToClean = [...emails, ...legacyEmails];
+
+  // Limpia solo los datos de ejemplo (nunca tu cuenta real)
+  const oldUsers = await User.find({ email: { $in: emailsToClean } });
+  const oldUserIds = oldUsers.map((user) => user._id);
+
+  await Recipe.deleteMany({ author: { $in: oldUserIds } });
+  // Quita los likes que esos usuarios dejaron en otras recetas
+  // Quita los likes que esos usuarios dejaron en otras recetas
+  // Quita los likes que esos usuarios dejaron en otras recetas
+  for (const userId of oldUserIds) {
+    await Recipe.updateMany({ likes: userId }, { $pull: { likes: userId } });
+  }
+  await User.deleteMany({ email: { $in: emailsToClean } });
+
   const password = await bcrypt.hash("123456", 10);
   const createdUsers = await User.insertMany(
     users.map((user) => ({ ...user, password })),
@@ -180,11 +317,27 @@ const seed = async () => {
     createdUsers.map((user) => [user.name, user._id]),
   );
 
+  const DAY = 24 * 60 * 60 * 1000;
+
   await Recipe.insertMany(
-    recipes.map(({ author, ...recipe }) => ({
-      ...recipe,
-      author: idByName[author],
-    })),
+    recipes.map(({ author, ...recipe }, index) => {
+      const authorId = idByName[author];
+
+      // Likes de ejemplo: los otros usuarios, repartidos de forma variada
+      const likes = createdUsers
+        .filter(
+          (user, userIndex) =>
+            !user._id.equals(authorId) && (index + userIndex) % 3 !== 0,
+        )
+        .map((user) => user._id);
+
+      return {
+        ...recipe,
+        author: authorId,
+        likes,
+        createdAt: new Date(Date.now() - (recipes.length - index) * DAY),
+      };
+    }),
   );
 
   console.log(

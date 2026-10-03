@@ -4,12 +4,12 @@ import Recipe from "../models/Recipe.js";
 const EDITABLE_FIELDS = [
   "title",
   "description",
-    "image",
-    "ingredients",
-    "steps",
-    "category",
-    "difficulty",
-    "cookingTime",
+  "image",
+  "ingredients",
+  "steps",
+  "category",
+  "difficulty",
+  "cookingTime",
 ];
 
 export const createRecipe = async (req, res) => {
@@ -141,5 +141,68 @@ export const deleteRecipe = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al eliminar la receta" });
+  }
+};
+
+export const likeRecipe = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.isValidObjectId(id)) {
+      return res.status(400).json({ message: "ID no válido" });
+    }
+
+    const recipe = await Recipe.findByIdAndUpdate(
+      id,
+      { $addToSet: { likes: req.user._id } },
+      { returnDocument: "after" },
+    );
+
+    if (!recipe) {
+      return res.status(404).json({ message: "Receta no encontrada" });
+    }
+
+    res.status(200).json({ message: "Me gusta añadido", likes: recipe.likes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al dar me gusta" });
+  }
+};
+
+export const unlikeRecipe = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.isValidObjectId(id)) {
+      return res.status(400).json({ message: "ID no válido" });
+    }
+
+    const recipe = await Recipe.findByIdAndUpdate(
+      id,
+      { $pull: { likes: req.user._id } },
+      { returnDocument: "after" },
+    );
+
+    if (!recipe) {
+      return res.status(404).json({ message: "Receta no encontrada" });
+    }
+
+    res.status(200).json({ message: "Me gusta quitado", likes: recipe.likes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al quitar me gusta" });
+  }
+};
+
+export const getLikedRecipes = async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ likes: req.user._id })
+      .populate("author", "name")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json(recipes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener las recetas" });
   }
 };

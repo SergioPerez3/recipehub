@@ -164,6 +164,9 @@ El token caduca a los 7 días.
 | PUT | `/recipes/:id` | Sí (autor) | Editar receta |
 | DELETE | `/recipes/:id` | Sí (autor) | Eliminar receta |
 | GET | `/users/:id` | No | Perfil público con sus recetas |
+| GET | `/recipes/liked` | Sí | Recetas a las que has dado me gusta |
+| POST | `/recipes/:id/likes` | Sí | Dar me gusta |
+| DELETE | `/recipes/:id/likes` | Sí | Quitar me gusta |
 
 ### Ejemplos
 
