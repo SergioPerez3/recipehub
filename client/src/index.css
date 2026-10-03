@@ -100,3 +100,47 @@
 .recipe-detail img {
   height: 300px;
 }
+
+/* ---------- DESPENSA ---------- */
+.recipe-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.despensa-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.pagination button {
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #2e9d57;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -15,9 +15,13 @@ function MainLayout() {
     <>
       <header className="brand">
         <Link to="/" className="brand-title">
-          <span className="brand-icon" aria-hidden="true">🍴</span>
+          <span className="brand-icon" aria-hidden="true">
+            🍴
+          </span>
           <span>TASTEFY</span>
-          <span className="brand-icon" aria-hidden="true">🔪</span>
+          <span className="brand-icon" aria-hidden="true">
+            🔪
+          </span>
         </Link>
         <p className="brand-tagline">Donde las ideas se llevan a la olla</p>
       </header>
@@ -28,6 +32,10 @@ function MainLayout() {
         <div className="nav-links">
           <Link to="/recipes">Despensa</Link>
           <Link to="/dashboard">Mi Cocina</Link>
+          <Link to="/likes" className="nav-likes" title="Mis me gusta">
+            <span aria-hidden="true">❤️</span>
+            <span className="sr-only">Mis me gusta</span>
+          </Link>
         </div>
 
         {user ? (

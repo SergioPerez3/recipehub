@@ -23,6 +23,11 @@ function HomePage() {
     fetchRecipes();
   }, []);
 
+  const mostLiked = [...recipes]
+    .filter((recipe) => recipe.likes.length > 0)
+    .sort((a, b) => b.likes.length - a.likes.length)
+    .slice(0, 12);
+
   return (
     <section className="home">
       <div className="container">
@@ -32,10 +37,8 @@ function HomePage() {
           <p>Todavía no hay recetas.</p>
         )}
 
-        {/* Los más gustados: lo añadimos cuando tengamos likes */}
-
-        {/* El back ya devuelve las recetas de la más nueva a la más antigua */}
         <RecipeCarousel title="Nuevas recetas" recipes={recipes.slice(0, 12)} />
+        <RecipeCarousel title="Los más gustados" recipes={mostLiked} />
 
         <Link to="/recipes">Ver toda la despensa</Link>
       </div>

@@ -69,6 +69,8 @@ function DashboardPage() {
                 <h3>{recipe.title}</h3>
               </Link>
 
+              <p>❤️ {recipe.likes.length}</p>
+
               <div className="mini-card-actions">
                 <Link to={`/dashboard/recipes/${recipe._id}/edit`}>Editar</Link>
                 <button onClick={() => handleDelete(recipe._id)}>Borrar</button>

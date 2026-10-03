@@ -48,3 +48,27 @@ export const deleteRecipe = async (id) => {
   });
   return handleResponse(response);
 };
+
+export const likeRecipe = async (id) => {
+  const response = await fetch(`${API_URL}/${id}/likes`, {
+    method: "POST",
+    headers: getAuthHeaders(),
+  });
+  return handleResponse(response);
+};
+
+export const unlikeRecipe = async (id) => {
+  const response = await fetch(`${API_URL}/${id}/likes`, {
+    method: "DELETE",
+    headers: getAuthHeaders(),
+  });
+  return handleResponse(response);
+};
+
+export const getLikedRecipes = async () => {
+  const response = await fetch(`${API_URL}/liked`, {
+    headers: getAuthHeaders(),
+  });
+  return handleResponse(response);
+};
+

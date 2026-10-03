@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getRecipeById } from "../services/recipeService";
 import { useAuth } from "../hooks/useAuth";
+import LikeButton from "../components/LikeButton";
 
 const toList = (text) =>
   text
@@ -44,14 +45,9 @@ function RecipeDetailPage() {
         <h1>{recipe.title}</h1>
 
         <p className="recipe-meta">
+          <LikeButton recipeId={recipe._id} initialLikes={recipe.likes} />
           {recipe.category} · {recipe.difficulty} · {recipe.cookingTime} min
         </p>
-
-        {recipe.author && (
-          <p>
-            Por <Link to={`/users/${recipe.author._id}`}>{recipe.author.name}</Link>
-          </p>
-        )}
 
         {isOwner && (
           <Link className="btn" to={`/dashboard/recipes/${recipe._id}/edit`}>
@@ -74,6 +70,12 @@ function RecipeDetailPage() {
             <li key={index}>{step}</li>
           ))}
         </ol>
+        {recipe.author && (
+          <p>
+            Por{" "}
+            <Link to={`/users/${recipe.author._id}`}>{recipe.author.name}</Link>
+          </p>
+        )}
       </div>
     </article>
   );

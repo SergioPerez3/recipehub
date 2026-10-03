@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import LikeButton from "./LikeButton";
 
-function RecipeCard({ recipe }) {
+function RecipeCard({ recipe, onLikeChange }) {
   return (
     <article className="recipe-card">
       <Link to={`/recipes/${recipe._id}`}>
@@ -24,6 +25,12 @@ function RecipeCard({ recipe }) {
           Por <Link to={`/users/${recipe.author._id}`}>{recipe.author.name}</Link>
         </p>
       )}
+
+      <LikeButton
+        recipeId={recipe._id}
+        initialLikes={recipe.likes}
+        onChange={(likes) => onLikeChange?.(recipe._id, likes)}
+      />
     </article>
   );
 }

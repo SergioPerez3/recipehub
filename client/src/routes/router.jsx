@@ -11,6 +11,7 @@ import DashboardPage from "../pages/DashboardPage";
 import RecipeFormPage from "../pages/RecipeFormPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import authLoader from "../loaders/authLoader";
+import LikedPage from "../pages/LikedPage";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
       { path: "users/:id", element: <UserProfilePage /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
+      { path: "likes", loader: authLoader, element: <LikedPage /> },
 
       // RUTAS PRIVADAS 
       { path: "dashboard",loader: authLoader, element: <DashboardPage /> },
